@@ -1,21 +1,28 @@
-# Hướng Dẫn Rút Tiền Từ Aave Về Ví MetaMask (Kết Nối Ledger Nano X)
+# Hướng Dẫn DeFi Trên Arbitrum: Từ Aave/Uniswap Đến VND
 
 > **⚠️ Lưu ý về hình ảnh**: Tài liệu này sử dụng hình ảnh minh họa được lưu trong thư mục `img/`. 
 > Để xem hình ảnh đầy đủ, vui lòng tải về bằng cách chạy lệnh trong file [DOWNLOAD_IMAGES.md](DOWNLOAD_IMAGES.md)
 
 ## Giới Thiệu
 
-Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ giao thức Aave về ví MetaMask của bạn, trong trường hợp ví MetaMask được kết nối với thiết bị phần cứng Ledger Nano X để bảo mật tối đa.
+Tài liệu này hướng dẫn toàn diện cách quản lý tài sản DeFi trên **Arbitrum network**, bao gồm:
+- ✅ Rút tiền từ **Aave** (Lending protocol)
+- ✅ Rút thanh khoản từ **Uniswap** (DEX)
+- ✅ Swap các tokens ra USDT
+- ✅ Chuyển USDT lên **Binance** và bán ra VND
+
+**Toàn bộ quy trình sử dụng mạng Arbitrum** - phí thấp, nhanh chóng, và được bảo vệ bởi Ledger Nano X.
 
 ---
 
 ## Yêu Cầu Trước Khi Bắt Đầu
 
 - ✅ Có tài khoản MetaMask đã kết nối với Ledger Nano X
-- ✅ Đã gửi tiền (deposit) vào Aave trước đó
-- ✅ Có đủ ETH để trả phí gas (thường từ $5-50 tùy thời điểm)
+- ✅ Đã gửi tiền (deposit) vào Aave hoặc Uniswap trên **Arbitrum**
+- ✅ Có đủ ETH trên Arbitrum để trả phí gas (thường $1-5, rất rẻ!)
 - ✅ Ledger Nano X đã cài đặt ứng dụng Ethereum
 - ✅ Đã cập nhật firmware và ứng dụng Ethereum lên phiên bản mới nhất
+- ✅ MetaMask đã thêm Arbitrum network
 
 ---
 
@@ -67,14 +74,14 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
 2. Click nút **"Connect Wallet"** ở góc trên bên phải
 3. Chọn **"MetaMask"** từ danh sách ví
 
-### 3.2 Chọn Mạng (Network)
+### 3.2 Chọn Mạng Arbitrum
 
 ![Aave Networks](img/aave-networks.png)
 
-1. Aave hỗ trợ nhiều mạng: Ethereum, Polygon, Avalanche, Arbitrum, Optimism
-2. Click vào dropdown network ở góc trên
-3. Chọn mạng mà bạn đã deposit tiền (thường là **Ethereum Mainnet**)
-4. MetaMask sẽ tự động chuyển đổi network
+1. Click vào dropdown network ở góc trên Aave
+2. Chọn **"Arbitrum"**
+3. MetaMask sẽ tự động chuyển đổi sang Arbitrum network
+4. Verify: Network hiển thị là **"Arbitrum"** trên cả Aave và MetaMask
 
 ---
 
@@ -302,9 +309,9 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
    - https://etherscan.io/gastracker
    - https://ethereumprice.org/gas/
 
-3. **Sử dụng mạng Layer 2**:
-   - Aave trên Polygon (phí rất thấp: $0.01-0.1)
-   - Aave trên Arbitrum/Optimism
+3. **Lợi ích Arbitrum**:
+   - Phí gas trên Arbitrum rất thấp: $0.50-$2/giao dịch
+   - Nhanh hơn: Xác nhận trong 2-5 phút
 
 ---
 
@@ -643,7 +650,7 @@ Sau khi Approval hoàn tất (hoặc nếu đã approve trước đó):
 ### ❌ Position không hiện trong Pool
 
 **Giải pháp**:
-1. Đảm bảo đúng network (Ethereum/Polygon/Arbitrum)
+1. Đảm bảo đã chọn đúng **Arbitrum** network
 2. Đảm bảo đúng wallet address
 3. Thử import position thủ công:
    - Click **"Import Pool"**
@@ -668,10 +675,9 @@ Sau khi Approval hoàn tất (hoặc nếu đã approve trước đó):
    - Đêm khuya giờ UTC (00:00-08:00)
    - Gas thường giảm 50-70%
 
-2. **Sử dụng Layer 2**:
-   - Uniswap trên **Arbitrum**: Phí ~$1-3
-   - Uniswap trên **Polygon**: Phí ~$0.01-0.5
-   - Uniswap trên **Optimism**: Phí ~$1-5
+2. **Lợi ích Arbitrum**:
+   - Phí gas trên Arbitrum: $1-3/giao dịch (rất rẻ so với Ethereum)
+   - Giao dịch nhanh: 2-5 phút xác nhận
 
 3. **Batch operations**:
    - Collect fees cùng lúc với Remove liquidity
@@ -802,7 +808,7 @@ Tuy nhiên, bạn vẫn nhận lại tokens + fees đã kiếm.
 Rút thanh khoản từ Uniswap cần hiểu rõ về:
 
 ✅ **Impermanent Loss** - Rủi ro chính của LP
-✅ **Phí gas cao** - Đặc biệt trên Ethereum mainnet
+✅ **Phí gas trên Arbitrum** - Thấp hơn nhiều ($1-3 vs $50-100 trên Ethereum)
 ✅ **Price range management** - Quan trọng với V3
 ✅ **Timing** - Rút khi IL thấp và fees cao
 
@@ -899,37 +905,20 @@ Tạo checklist các token cần swap:
 
 ---
 
-## Bước 2: Chọn Platform Swap
+## Bước 2: Swap Trên Uniswap
 
-### 2.1 So Sánh Các DEX
+### 2.1 Tại Sao Dùng Uniswap Trên Arbitrum?
 
-| Platform | Ưu điểm | Nhược điểm | Phù hợp cho |
-|----------|---------|------------|-------------|
-| **Uniswap** | Thanh khoản tốt, UX đơn giản | Phí gas cao, không tối ưu giá | Tokens phổ biến |
-| **1inch** | Tìm giá tốt nhất, split routes | Interface phức tạp | Muốn giá tốt nhất |
-| **CoWSwap** | MEV protection, gasless | Execution chậm hơn | Lệnh lớn, tránh sandwich |
-| **Matcha** | Aggregator tốt, UX đẹp | Chưa phổ biến lắm | Trading thường xuyên |
+**Uniswap** là DEX (sàn giao dịch phi tập trung) lớn nhất và uy tín nhất:
 
-### 2.2 Chọn Platform (Khuyến Nghị)
-
-**Dùng 1inch** khi:
-- Swap số lượng lớn (>$5,000)
-- Muốn giá tốt nhất
-- Token có thanh khoản thấp
-
-**Dùng Uniswap** khi:
-- Swap tokens phổ biến (ETH, USDC, DAI)
-- Cần nhanh
-- Quen với giao diện
-
-**Dùng CoWSwap** khi:
-- Swap số lượng rất lớn (>$50,000)
-- Sợ MEV attacks (sandwich, frontrun)
-- Không vội
+✅ **Thanh khoản sâu** - Dễ swap với giá tốt
+✅ **Giao diện đơn giản** - Dễ sử dụng cho người mới
+✅ **Phí thấp trên Arbitrum** - Chỉ $1-3/giao dịch
+✅ **An toàn** - Smart contracts đã được audit kỹ
 
 ---
 
-## Bước 3: Swap Trên Uniswap (Cách Cơ Bản)
+## Bước 3: Thực Hiện Swap
 
 ### 3.1 Truy Cập Uniswap
 
@@ -1007,7 +996,8 @@ Trước khi swap, kiểm tra kỹ:
 
 ⚠️ **Cảnh báo về High Slippage**:
 - Slippage cao = có thể bị sandwich attack
-- Nếu phải dùng >2%, cân nhắc dùng CoWSwap thay vì Uniswap
+- Nếu phải dùng >2%, chia nhỏ order thành nhiều lần swap
+- Hoặc chờ thị trường ổn định hơn
 
 ---
 
@@ -1118,98 +1108,9 @@ Khi transaction thành công:
 
 ---
 
-## Bước 6: Sử Dụng 1inch (Tối Ưu Giá)
+## Bước 6: Kiểm Tra Kết Quả Final
 
-### 6.1 Truy Cập 1inch
-
-![1inch Interface](img/1inch-interface.png)
-
-1. Vào: https://app.1inch.io/
-2. Connect MetaMask
-3. Chọn network: Ethereum
-
-### 6.2 So Sánh Giá Với Uniswap
-
-![1inch Comparison](img/1inch-comparison.png)
-
-1. Chọn token pair (giống như Uniswap)
-2. Nhập số lượng
-3. 1inch tự động:
-   - Tìm route tốt nhất qua nhiều DEX
-   - Split order nếu cần thiết
-   - Hiển thị savings so với Uniswap
-
-**Ví dụ output**:
-```
-Uniswap: 1 ETH = 2,450 USDT
-1inch: 1 ETH = 2,465 USDT
-Savings: $15 (0.61%)
-Route: 70% Uniswap V3 + 30% Curve
-```
-
-### 6.3 Swap Trên 1inch
-
-![1inch Swap](img/1inch-swap.png)
-
-1. Review route và savings
-2. Click **"Approve [Token]"** (nếu cần)
-3. Click **"Swap"**
-4. Xác nhận trên MetaMask và Ledger
-5. Chờ transaction complete
-
-**Lưu ý**: 
-- 1inch có thể phức tạp hơn Uniswap
-- Gas fee đôi khi cao hơn do multi-hop routing
-- Chỉ dùng khi savings > extra gas cost
-
----
-
-## Bước 7: Sử Dụng CoWSwap (Chống MEV)
-
-### 7.1 Tại Sao Dùng CoWSwap?
-
-**MEV (Maximal Extractable Value)** là khi bots:
-- **Frontrun**: Mua trước bạn khi thấy pending transaction
-- **Sandwich attack**: Mua trước, bán sau để ăn spread
-- Làm bạn nhận ít token hơn expected
-
-**CoWSwap bảo vệ bằng**:
-- **Batch auctions**: Gom nhiều orders lại
-- **Solvers compete**: Tìm giá tốt nhất
-- **No public mempool**: Bots không thấy order của bạn
-
-### 7.2 Swap Trên CoWSwap
-
-![CoWSwap Interface](img/cowswap-interface.png)
-
-1. Vào: https://swap.cow.fi/
-2. Connect wallet
-3. Select tokens (giống như thường lệ)
-4. Enter amount
-5. Click **"Swap"**
-6. Ký order (chỉ tốn gas rất ít hoặc gasless)
-7. **Chờ solver execute**: 2-5 phút
-8. Nhận USDT vào ví
-
-**Ưu điểm**:
-- ✅ Được bảo vệ khỏi MEV
-- ✅ Đôi khi giá tốt hơn cả Uniswap
-- ✅ Gas thấp (solvers trả gas)
-
-**Nhược điểm**:
-- ❌ Chậm hơn (2-5 phút thay vì <1 phút)
-- ❌ Có thể expire nếu không fill được
-
-**Khi nào dùng**:
-- Swap số lượng lớn (>$10,000)
-- Market volatile (dễ bị MEV)
-- Không vội
-
----
-
-## Bước 8: Kiểm Tra Kết Quả Final
-
-### 8.1 Xem Tổng USDT Trong Ví
+### 6.1 Xem Tổng USDT Trong Ví
 
 ![Final USDT Balance](img/metamask-usdt-final.png)
 
@@ -1218,17 +1119,17 @@ Route: 70% Uniswap V3 + 30% Curve
 3. Xem total balance
 4. Compare với expected amount
 
-### 8.2 Verify Trên Block Explorer
+### 6.2 Verify Trên Arbiscan
 
-![Etherscan Wallet](img/etherscan-wallet-usdt.png)
+![Arbiscan Wallet](img/arbiscan-wallet-usdt.png)
 
-1. Vào Etherscan
+1. Vào **Arbiscan**: https://arbiscan.io/
 2. Paste địa chỉ ví
 3. Tab **"Token Holdings"**
 4. Tìm USDT
 5. Verify balance đúng
 
-### 8.3 Tính Toán Chi Phí
+### 6.3 Tính Toán Chi Phí
 
 ![Cost Calculation](img/cost-calculation.png)
 
@@ -1258,12 +1159,12 @@ TOTAL            | -       | 4,059.3       | $48     | 4,011.3
 
 ### Ước Tính Chi Phí Gas
 
-| Số lượng swaps | Gas/swap | Total Gas Cost | Savings Tips |
-|----------------|----------|----------------|--------------|
-| 1 swap | $10-15 | $10-15 | Tốt rồi |
-| 3 swaps | $8-12 | $24-36 | Batch trong cùng session |
-| 5 swaps | $8-10 | $40-50 | Swap vào giờ thấp điểm |
-| 10 swaps | $8-10 | $80-100 | Cân nhắc aggregate sang USDC trước rồi USDC→USDT |
+| Số lượng swaps | Gas/swap (Arbitrum) | Total Gas Cost | Savings Tips |
+|----------------|---------------------|----------------|--------------|
+| 1 swap | $1-2 | $1-2 | Tốt rồi |
+| 3 swaps | $1-2 | $3-6 | Batch trong cùng session |
+| 5 swaps | $1-2 | $5-10 | Swap vào giờ thấp điểm |
+| 10 swaps | $1-2 | $10-20 | Aggregate sang USDC trước rồi USDC→USDT |
 
 ### Strategies Tiết Kiệm
 
@@ -1271,33 +1172,20 @@ TOTAL            | -       | 4,059.3       | $48     | 4,011.3
 ```
 Nhiều tokens → USDC → USDT
 ```
-- Swap tất cả tokens → USDC (Uniswap)
-- 1 swap lớn USDC → USDT (Curve: phí thấp cho stablecoin)
-- **Savings**: 20-30% gas nếu >5 tokens
+- Swap tất cả tokens → USDC (Uniswap trên Arbitrum)
+- 1 swap lớn USDC → USDT
+- **Savings**: Tiết kiệm ~20-30% gas nếu có >5 tokens
 
-**Strategy 2: Use Layer 2**
+**Strategy 2: Giờ thấp điểm**
 
-Bridge sang Arbitrum/Optimism:
-```
-Ethereum: Withdraw từ Aave/Uniswap → Tokens
-↓ Bridge (~$10-20)
-Arbitrum: Swap tokens → USDT (phí ~$1-2/swap)
-↓ Bridge back (~$10-20)  
-Ethereum: Nhận USDT
-```
-- **Savings**: Đáng nếu >10 swaps
-- **Cost**: $20-40 bridge, nhưng save $80+ swaps
-
-**Strategy 3: Giờ thấp điểm**
-
-Theo dõi gas prices:
-- **Peak hours** (9am-5pm EST): 50-100 gwei
-- **Low hours** (2am-7am EST, weekends): 15-30 gwei
-- **Savings**: 50-70% gas cost
+Theo dõi gas prices trên Arbitrum:
+- **Peak hours** (9am-5pm EST): $2-3/swap
+- **Low hours** (2am-7am EST, weekends): $0.50-$1/swap
+- **Savings**: ~50% gas cost
 
 Tools:
-- https://etherscan.io/gastracker
-- https://www.ethereumprice.org/gas/
+- https://arbiscan.io/gastracker
+- https://l2fees.info/ - So sánh phí các Layer 2
 
 ---
 
@@ -1438,40 +1326,6 @@ Mỗi swap là **taxable event** ở hầu hết các quốc gia:
 
 ---
 
-## Alternatives: Rút Ra Fiat Trực Tiếp
-
-### Cách 1: Gửi USDT Sang CEX
-
-Sau khi có USDT, withdraw về tiền mặt:
-
-1. **Gửi USDT lên Binance/Coinbase**:
-   - Get deposit address
-   - Send USDT từ MetaMask
-   - Wait 10-30 confirmations
-   
-2. **Sell USDT → Fiat**:
-   - Binance P2P hoặc Spot
-   - Withdraw về bank
-
-3. **Chi phí**:
-   - Transfer fee: $5-25 (Ethereum) hoặc $1 (Tron)
-   - CEX withdrawal fee: 0-2%
-
-### Cách 2: Off-ramp Services
-
-**Moonpay**: https://www.moonpay.com/
-- Sell crypto directly từ wallet
-- Nhận tiền qua bank transfer
-- Fee: 4-5%
-
-**Ramp**: https://ramp.network/
-- Similar to Moonpay
-- Lower fees trong một số regions
-
-**Transak**: https://transak.com/
-- Good for non-US users
-- Wide currency support
-
 ---
 
 ## Kết Luận - Swap Ra USDT
@@ -1498,19 +1352,14 @@ Sau khi có USDT, withdraw về tiền mặt:
 ### Khuyến Nghị Final
 
 **Cho người mới**:
-- Dùng Uniswap
+- Dùng Uniswap trên Arbitrum
 - Swap vào giờ thấp điểm
-- Check price trên nhiều nguồn
+- Check price trên CoinGecko/CMC trước khi swap
 
-**Cho trader experienced**:
-- Dùng 1inch để optimize price
-- CoWSwap cho orders lớn
-- Monitor MEV risks
-
-**Cho whale**:
-- Consider OTC desks
+**Cho số vốn lớn**:
+- Chia nhỏ orders thành nhiều lần
 - DCA out trong vài ngày
-- Consult tax advisor
+- Set slippage thấp để tránh MEV
 
 **Chúc bạn swap thành công! 💸**
 
@@ -1565,9 +1414,9 @@ Bạn cần bridge sang Arbitrum trước:
 2. Bridge USDT: Ethereum → Arbitrum
 3. Phí ~$15-40, thời gian ~5 phút
 
-**Cách 3: Withdraw Từ CEX Khác**
-- Nếu có USDT trên CEX khác (Coinbase, Kraken)
-- Withdraw trực tiếp sang MetaMask với Arbitrum network
+**Cách 3: Mua USDT Trực Tiếp Trên Arbitrum**
+- Mua USDT trực tiếp trên Uniswap (Arbitrum)
+- Hoặc withdraw từ Binance với Arbitrum network
 - Phí ~$1-2
 
 ---
@@ -1660,11 +1509,12 @@ Bạn cần bridge sang Arbitrum trước:
    - Có 42 ký tự
    - Network hiển thị: **Arbitrum One**
 
-⚠️ **Cảnh báo**:
-- **KHÔNG** gửi USDT từ Ethereum mainnet vào địa chỉ Arbitrum
+⚠️ **CảNH BÁO CỰC KỲ QUAN TRỌNG**:
+- **PHẢI** chọn đúng **Arbitrum One** network
+- **KHÔNG** gửi từ mạng khác (Ethereum, Polygon, BSC, v.v.)
 - **KHÔNG** gửi token khác ngoài USDT
-- **LUÔN LUÔN** double-check network trước khi gửi
-- Nếu gửi sai network, tiền có thể bị mất vĩnh viễn
+- **LUÔN** double-check 3 lần trước khi gửi
+- **Nếu sai network = mất tiền vĩnh viễn!**
 
 ### 2.4 Test Với Số Lượng Nhỏ (Khuyến Nghị)
 
@@ -2296,10 +2146,8 @@ Sau khi có VND trong tài khoản ngân hàng:
 | Method | Phí | Thời gian | Tỷ giá | Khó |
 |--------|-----|-----------|--------|-----|
 | **P2P Binance** | 0% | 15-30 phút | 99-101% | Dễ |
-| **Binance Direct** | 1-2% | 1-5 ngày | 100% | Dễ |
-| **Remitano P2P** | 0% | 20-40 phút | 98-102% | Trung bình |
+| **Binance Spot** | 0.1% | Tức thì | 100% | Dễ |
 | **Bank Wire** | 2-5% | 3-7 ngày | 100% | Khó |
-| **ATM Crypto** | 5-10% | Tức thì | 90-95% | Dễ |
 
 **Khuyến nghị**: **P2P Binance** là best choice cho VN users:
 - ✅ Miễn phí
@@ -2343,20 +2191,22 @@ DeFi → Fiat: 1-2 giờ
 Total: ~1.5 giờ (optimal)
 ```
 
-### 💵 Chi Phí Tổng
+### 💵 Chi Phí Tổng (Trên Arbitrum)
 
-**Ví dụ: $10,000 portfolio**
+**Ví dụ: $10,000 portfolio trên Arbitrum**
 
-| Step | Chi phí | % |
-|------|---------|---|
-| Aave withdraw | $15 | 0.15% |
-| Uniswap remove | $25 | 0.25% |
-| Swaps (5 tokens) | $50 | 0.50% |
-| Transfer to Binance | $2 | 0.02% |
+| Step | Chi phí (Arbitrum) | % |
+|------|-------------------|---|
+| Aave withdraw | $2 | 0.02% |
+| Uniswap remove | $2 | 0.02% |
+| Swaps (5 tokens) | $8 | 0.08% |
+| Transfer to Binance | $1 | 0.01% |
 | P2P (0 fee) | $0 | 0% |
-| **TOTAL** | **$92** | **0.92%** |
+| **TOTAL** | **$13** | **0.13%** |
 
-**Net received**: $10,000 - $92 = **$9,908**
+**Net received**: $10,000 - $13 = **$9,987**
+
+🎉 **Tiết kiệm ~85% phí gas so với Ethereum mainnet!**
 
 ### ✅ Checklist Cuối Cùng
 
@@ -2382,41 +2232,44 @@ Sau khi hoàn tất:
 - Hardware wallet (Ledger) là must-have
 - Double-check tất cả addresses
 - Verify contracts trước khi interact
+- Luôn verify đúng network: Arbitrum
 
 **Optimization**:
 - Timing matters: Swap vào giờ thấp điểm
-- Use Layer 2 để save gas
-- Compare prices: Uniswap vs 1inch vs CoWSwap
+- Arbitrum = phí rẻ, không cần tối ưu quá nhiều
+- Uniswap trên Arbitrum đã đủ tốt cho hầu hết use cases
 
-**P2P**:
+**P2P Binance**:
 - Merchant reputation > Price
 - NEVER confirm trước khi nhận tiền
 - Screenshot everything
+- Chọn merchant >1000 orders
 
 **Tax**:
 - Every swap/trade is taxable
 - Keep detailed records
-- Consult tax advisor
+- Consult tax advisor nếu cần
 
 ### 💪 Next Steps
 
-Sau khi thành thạo quy trình:
+Sau khi thành thạo quy trình trên Arbitrum:
 
 **Level Up**:
-1. Explore yield farming strategies
+1. Explore yield farming strategies trên Arbitrum
 2. Learn about liquidity mining
-3. Understand advanced DeFi (Curve, Yearn, Convex)
-4. Try other chains (Polygon, Avalanche, BSC)
+3. Thử các protocols khác trên Arbitrum (GMX, Camelot, Radiant)
+4. Monitor APY và rebalance positions
 
 **Diversify**:
 - Không all-in vào một protocol
 - Rebalance portfolio định kỳ
 - Monitor smart contract risks
+- Spread funds giữa Aave và Uniswap
 
 **Stay Updated**:
-- Follow DeFi news
-- Join communities (Discord, Telegram)
-- Learn new protocols
+- Follow Arbitrum ecosystem news
+- Join Aave & Uniswap communities
+- Monitor gas fees trends trên Arbitrum
 
 ---
 
@@ -2425,35 +2278,57 @@ Sau khi thành thạo quy trình:
 Từ DeFi protocols → Crypto trong ví → USDT → VND trong ngân hàng
 
 **Bạn đã học được**:
-- ✅ Lending/Borrowing (Aave)
-- ✅ Liquidity providing (Uniswap)
-- ✅ DEX trading (Swap)
-- ✅ Cross-chain transfers
-- ✅ CEX deposits
-- ✅ P2P trading
-- ✅ Risk management
-- ✅ Tax compliance
+- ✅ Lending/Borrowing trên Aave (Arbitrum)
+- ✅ Liquidity providing trên Uniswap (Arbitrum)
+- ✅ DEX trading với phí thấp
+- ✅ Transfer USDT từ Arbitrum sang Binance
+- ✅ P2P trading trên Binance
+- ✅ Risk management & Security với Ledger
+- ✅ Tax compliance basics
 
-**Welcome to the world of DeFi! 🚀💎**
+**Platforms chính**:
+- 🔷 **Blockchain**: Arbitrum One
+- 💰 **Lending**: Aave V3
+- 🦄 **DEX**: Uniswap V3
+- 🟡 **CEX**: Binance
+- 🔐 **Hardware Wallet**: Ledger Nano X
+
+**Welcome to DeFi on Arbitrum! 🚀💎**
 
 ---
 
 ## Tài Liệu Tham Khảo
 
-### Aave
-- [Aave Documentation](https://docs.aave.com/)
+### Arbitrum
+- [Arbitrum Portal](https://portal.arbitrum.one/)
+- [Arbiscan - Block Explorer](https://arbiscan.io/)
+- [Arbitrum Bridge](https://bridge.arbitrum.io/)
+- [Arbitrum Documentation](https://docs.arbitrum.io/)
+
+### Aave (Arbitrum)
+- [Aave V3 Documentation](https://docs.aave.com/)
+- [Aave App on Arbitrum](https://app.aave.com/?marketName=proto_arbitrum_v3)
+- [Aave Risk Parameters](https://docs.aave.com/risk/)
+
+### Uniswap (Arbitrum)
+- [Uniswap V3 Documentation](https://docs.uniswap.org/)
+- [Uniswap on Arbitrum](https://app.uniswap.org/)
+- [Uniswap Analytics](https://info.uniswap.org/#/arbitrum)
+- [Impermanent Loss Calculator](https://dailydefi.org/tools/impermanent-loss-calculator/)
+
+### Binance
+- [Binance Vietnam](https://www.binance.com/vi)
+- [Binance P2P Guide](https://www.binance.com/en/support/faq/360039384951)
+- [Binance Academy](https://academy.binance.com/vi)
+
+### Tools & Security
 - [MetaMask Support](https://support.metamask.io/)
 - [Ledger Support](https://support.ledger.com/)
-- [Etherscan](https://etherscan.io/)
-
-### Uniswap
-- [Uniswap V3 Documentation](https://docs.uniswap.org/)
-- [Uniswap V2 Documentation](https://docs.uniswap.org/contracts/v2/overview)
-- [Uniswap Support](https://support.uniswap.org/)
-- [Impermanent Loss Calculator](https://dailydefi.org/tools/impermanent-loss-calculator/)
-- [Uniswap Analytics](https://info.uniswap.org/)
+- [Revoke.cash - Token Approvals](https://revoke.cash/)
+- [L2Fees - Compare Gas Fees](https://l2fees.info/)
 
 ---
 
 *Tài liệu được cập nhật: Tháng 12/2025*
-*Version: 2.0*
+*Version: 3.0 - Arbitrum Focused*
+*Focus: Arbitrum + Aave + Uniswap + Binance*
