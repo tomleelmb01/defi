@@ -822,6 +822,700 @@ Rút thanh khoản từ Uniswap cần hiểu rõ về:
 
 ---
 
+# PHẦN 3: Hướng Dẫn Swap Toàn Bộ Tài Sản Ra USDT
+
+## Giới Thiệu
+
+Khi bạn đã rút tiền từ Aave và Uniswap, ví của bạn có thể chứa nhiều loại token khác nhau (ETH, USDC, DAI, LINK, v.v.). Để chuyển tất cả về một stablecoin như USDT, bạn cần thực hiện swap.
+
+### Lý Do Swap Ra USDT
+
+✅ **Ổn định giá trị** - Tránh biến động thị trường crypto
+✅ **Dễ quản lý** - Chỉ 1 token thay vì nhiều token
+✅ **Dễ rút về fiat** - Các sàn CEX hỗ trợ USDT tốt hơn
+✅ **Lock profit** - Chốt lãi sau khi giao dịch thành công
+✅ **Chuẩn bị thanh toán** - USDT được chấp nhận rộng rãi
+
+---
+
+## Yêu Cầu
+
+- ✅ Có các token trong ví MetaMask cần swap
+- ✅ Có đủ ETH để trả phí gas (ít nhất $20-50 cho nhiều giao dịch)
+- ✅ MetaMask kết nối Ledger Nano X
+- ✅ Hiểu về Slippage và MEV
+
+---
+
+## Bước 1: Kiểm Tra Tài Sản Trong Ví
+
+### 1.1 Xem Tổng Quan Trong MetaMask
+
+![MetaMask Portfolio](img/metamask-portfolio.png)
+
+1. Mở MetaMask
+2. Click vào tab **"Tokens"**
+3. Xem danh sách tất cả tokens bạn có
+4. Ghi chú các tokens cần swap:
+   - Token name (ETH, USDC, DAI, etc.)
+   - Balance (số lượng)
+   - Value (giá trị USD)
+
+### 1.2 Sử Dụng Portfolio Tracker
+
+![Zapper Portfolio](img/zapper-portfolio.png)
+
+Để xem tổng quan tốt hơn, sử dụng các công cụ:
+
+**Zapper.fi**:
+1. Truy cập: https://zapper.fi/
+2. Connect wallet
+3. Xem tất cả tokens và giá trị
+4. Dashboard hiển thị:
+   - Total portfolio value
+   - Breakdown by token
+   - Tokens in DeFi protocols
+
+**DeBank**:
+1. Truy cập: https://debank.com/
+2. Nhập địa chỉ ví hoặc connect
+3. Xem chi tiết assets
+
+### 1.3 Lập Danh Sách Swap
+
+Tạo checklist các token cần swap:
+
+```
+☐ ETH: 0.5 ETH → USDT
+☐ USDC: 1,000 USDC → USDT
+☐ DAI: 500 DAI → USDT
+☐ LINK: 50 LINK → USDT
+☐ UNI: 100 UNI → USDT
+```
+
+**Lưu ý**: 
+- Giữ lại một ít ETH (~0.05-0.1 ETH) cho phí gas các giao dịch sau
+- Không swap tokens có giá trị quá nhỏ (<$10) vì phí gas có thể cao hơn giá trị token
+
+---
+
+## Bước 2: Chọn Platform Swap
+
+### 2.1 So Sánh Các DEX
+
+| Platform | Ưu điểm | Nhược điểm | Phù hợp cho |
+|----------|---------|------------|-------------|
+| **Uniswap** | Thanh khoản tốt, UX đơn giản | Phí gas cao, không tối ưu giá | Tokens phổ biến |
+| **1inch** | Tìm giá tốt nhất, split routes | Interface phức tạp | Muốn giá tốt nhất |
+| **CoWSwap** | MEV protection, gasless | Execution chậm hơn | Lệnh lớn, tránh sandwich |
+| **Matcha** | Aggregator tốt, UX đẹp | Chưa phổ biến lắm | Trading thường xuyên |
+
+### 2.2 Chọn Platform (Khuyến Nghị)
+
+**Dùng 1inch** khi:
+- Swap số lượng lớn (>$5,000)
+- Muốn giá tốt nhất
+- Token có thanh khoản thấp
+
+**Dùng Uniswap** khi:
+- Swap tokens phổ biến (ETH, USDC, DAI)
+- Cần nhanh
+- Quen với giao diện
+
+**Dùng CoWSwap** khi:
+- Swap số lượng rất lớn (>$50,000)
+- Sợ MEV attacks (sandwich, frontrun)
+- Không vội
+
+---
+
+## Bước 3: Swap Trên Uniswap (Cách Cơ Bản)
+
+### 3.1 Truy Cập Uniswap
+
+![Uniswap Swap](img/uniswap-swap.png)
+
+1. Vào: https://app.uniswap.org/
+2. Click **"Connect Wallet"** → chọn MetaMask
+3. Đảm bảo tab **"Swap"** được chọn (mặc định)
+
+### 3.2 Chọn Token Cặp
+
+![Select Tokens](img/uniswap-select-tokens.png)
+
+1. **Token bên trên**: Click để chọn token muốn swap (ví dụ: ETH)
+2. **Token bên dưới**: Click để chọn USDT
+   - Search "USDT"
+   - Chọn **Tether USD (USDT)**
+   - Verify contract address: `0xdac17f958d2ee523a2206206994597c13d831ec7`
+
+⚠️ **Cảnh báo**: Luôn kiểm tra contract address! Có nhiều fake USDT.
+
+### 3.3 Nhập Số Lượng
+
+![Enter Amount](img/uniswap-enter-amount.png)
+
+**Cách 1: Nhập số lượng token input**
+1. Nhập số lượng token muốn swap (ví dụ: 0.5 ETH)
+2. Uniswap tự động tính số USDT nhận được
+
+**Cách 2: Nhập số lượng USDT muốn nhận**
+1. Click vào ô USDT bên dưới
+2. Nhập số USDT muốn có
+3. Uniswap tính số token cần swap
+
+**Cách 3: Swap hết (Max)**
+1. Click nút **"Max"** hoặc **"Half"**
+2. **Lưu ý**: Nếu swap ETH, để lại 0.05-0.1 ETH cho phí gas
+
+### 3.4 Kiểm Tra Quote
+
+![Swap Quote](img/uniswap-quote.png)
+
+Trước khi swap, kiểm tra kỹ:
+
+**Price Impact**: 
+- <0.5%: Tốt ✅
+- 0.5-3%: Chấp nhận được ⚠️
+- >3%: Cân nhắc lại hoặc split thành nhiều lệnh ❌
+
+**Minimum received**: 
+- Số USDT tối thiểu bạn nhận (sau slippage)
+- Nếu quá thấp, giao dịch sẽ revert
+
+**Rate**:
+- 1 ETH = ??? USDT
+- So sánh với giá trên CoinGecko/CMC
+
+**Network Fee (Gas)**:
+- Phí ETH cần trả
+- Click để xem chi tiết và điều chỉnh
+
+### 3.5 Cài Đặt Slippage
+
+![Slippage Settings](img/uniswap-slippage.png)
+
+1. Click biểu tượng **⚙️ Settings**
+2. Chọn **"Slippage tolerance"**:
+   - **Auto**: Uniswap tự động (~0.5-1%)
+   - **0.1%**: Cho stablecoins (USDC → USDT)
+   - **0.5%**: Cho tokens thông thường (ETH → USDT)
+   - **1-3%**: Cho tokens ít thanh khoản
+3. **Transaction deadline**: 
+   - Mặc định: 30 phút
+   - Có thể tăng nếu mạng chậm
+
+⚠️ **Cảnh báo về High Slippage**:
+- Slippage cao = có thể bị sandwich attack
+- Nếu phải dùng >2%, cân nhắc dùng CoWSwap thay vì Uniswap
+
+---
+
+## Bước 4: Thực Hiện Swap
+
+### 4.1 Approve Token (Lần Đầu)
+
+![Approve Token](img/uniswap-approve-swap.png)
+
+Nếu swap token ERC-20 (không phải ETH) lần đầu:
+
+1. Click nút **"Approve [Token]"**
+2. MetaMask hiện popup Approval
+3. Có 2 options:
+   - **Unlimited approval**: Không cần approve lần sau (rủi ro cao nếu contract bị hack)
+   - **Custom amount**: Chỉ approve số lượng cần thiết (an toàn hơn)
+4. **Khuyến nghị**: Chọn custom amount = số lượng swap + 1-2%
+5. Click **"Confirm"** trên MetaMask
+6. Xác nhận trên Ledger:
+   - Xem contract address
+   - Xem token đang approve
+   - Nhấn Accept
+7. Chờ approval hoàn tất (~30 giây)
+
+### 4.2 Execute Swap
+
+![Execute Swap](img/uniswap-execute-swap.png)
+
+Sau khi approval xong (hoặc nếu swap ETH):
+
+1. Click nút **"Swap"** 
+2. Popup xác nhận cuối hiện ra, review:
+   - Input: Token và số lượng swap
+   - Output: USDT sẽ nhận (estimate)
+   - Price impact
+   - Minimum received
+   - Network fee
+3. Click **"Confirm Swap"**
+4. MetaMask hiện popup:
+   - Gas fee
+   - Total cost
+   - Data (contract interaction)
+5. Click **"Confirm"** trên MetaMask
+6. Xác nhận trên Ledger Nano X:
+   - Review transaction
+   - Amount: 0 ETH (nếu swap token khác) hoặc số ETH (nếu swap ETH)
+   - Contract: Uniswap Router
+   - Nhấn Accept and send
+
+### 4.3 Theo Dõi Transaction
+
+![Transaction Status](img/uniswap-tx-status.png)
+
+1. Uniswap hiển thị **"Transaction submitted"**
+2. Click **"View on Etherscan"** để theo dõi
+3. Trạng thái trên Etherscan:
+   - **Pending**: Đang chờ xác nhận
+   - **Success**: Hoàn tất ✅
+   - **Failed**: Thất bại (có thể do slippage, gas không đủ, v.v.)
+4. Thời gian: 15 giây - 3 phút (tùy gas)
+
+### 4.4 Xác Nhận Hoàn Tất
+
+![Swap Success](img/uniswap-swap-success.png)
+
+Khi transaction thành công:
+
+1. Uniswap hiển thị **"Success"** với confetti 🎉
+2. Kiểm tra MetaMask:
+   - Token cũ giảm hoặc biến mất
+   - USDT tăng lên
+3. Note lại transaction hash để tracking
+
+---
+
+## Bước 5: Swap Token Tiếp Theo
+
+### 5.1 Quy Trình Lặp Lại
+
+Đối với mỗi token trong danh sách:
+
+```
+1. Click "Select token" → Chọn token tiếp theo
+2. Enter amount (Max hoặc số cụ thể)
+3. Review quote
+4. Approve (nếu chưa approve)
+5. Swap
+6. Confirm trên Ledger
+7. Chờ complete
+8. Check off trong checklist ✓
+```
+
+### 5.2 Tips Tối Ưu Hóa
+
+**Batch Swap Cùng Lúc**:
+- Mở nhiều tab Uniswap
+- Approve tất cả tokens trước
+- Submit swaps liên tiếp (nhưng chờ mỗi cái confirm)
+
+**Ưu tiên swap**:
+1. Tokens lớn nhất trước (để có USDT sớm)
+2. Tokens dễ swap (high liquidity)
+3. Tokens nhỏ cuối cùng
+
+**Skip tokens nhỏ**:
+- Nếu token value < $10 và gas fee > $5, bỏ qua
+- Không đáng swap vì lỗ
+
+---
+
+## Bước 6: Sử Dụng 1inch (Tối Ưu Giá)
+
+### 6.1 Truy Cập 1inch
+
+![1inch Interface](img/1inch-interface.png)
+
+1. Vào: https://app.1inch.io/
+2. Connect MetaMask
+3. Chọn network: Ethereum
+
+### 6.2 So Sánh Giá Với Uniswap
+
+![1inch Comparison](img/1inch-comparison.png)
+
+1. Chọn token pair (giống như Uniswap)
+2. Nhập số lượng
+3. 1inch tự động:
+   - Tìm route tốt nhất qua nhiều DEX
+   - Split order nếu cần thiết
+   - Hiển thị savings so với Uniswap
+
+**Ví dụ output**:
+```
+Uniswap: 1 ETH = 2,450 USDT
+1inch: 1 ETH = 2,465 USDT
+Savings: $15 (0.61%)
+Route: 70% Uniswap V3 + 30% Curve
+```
+
+### 6.3 Swap Trên 1inch
+
+![1inch Swap](img/1inch-swap.png)
+
+1. Review route và savings
+2. Click **"Approve [Token]"** (nếu cần)
+3. Click **"Swap"**
+4. Xác nhận trên MetaMask và Ledger
+5. Chờ transaction complete
+
+**Lưu ý**: 
+- 1inch có thể phức tạp hơn Uniswap
+- Gas fee đôi khi cao hơn do multi-hop routing
+- Chỉ dùng khi savings > extra gas cost
+
+---
+
+## Bước 7: Sử Dụng CoWSwap (Chống MEV)
+
+### 7.1 Tại Sao Dùng CoWSwap?
+
+**MEV (Maximal Extractable Value)** là khi bots:
+- **Frontrun**: Mua trước bạn khi thấy pending transaction
+- **Sandwich attack**: Mua trước, bán sau để ăn spread
+- Làm bạn nhận ít token hơn expected
+
+**CoWSwap bảo vệ bằng**:
+- **Batch auctions**: Gom nhiều orders lại
+- **Solvers compete**: Tìm giá tốt nhất
+- **No public mempool**: Bots không thấy order của bạn
+
+### 7.2 Swap Trên CoWSwap
+
+![CoWSwap Interface](img/cowswap-interface.png)
+
+1. Vào: https://swap.cow.fi/
+2. Connect wallet
+3. Select tokens (giống như thường lệ)
+4. Enter amount
+5. Click **"Swap"**
+6. Ký order (chỉ tốn gas rất ít hoặc gasless)
+7. **Chờ solver execute**: 2-5 phút
+8. Nhận USDT vào ví
+
+**Ưu điểm**:
+- ✅ Được bảo vệ khỏi MEV
+- ✅ Đôi khi giá tốt hơn cả Uniswap
+- ✅ Gas thấp (solvers trả gas)
+
+**Nhược điểm**:
+- ❌ Chậm hơn (2-5 phút thay vì <1 phút)
+- ❌ Có thể expire nếu không fill được
+
+**Khi nào dùng**:
+- Swap số lượng lớn (>$10,000)
+- Market volatile (dễ bị MEV)
+- Không vội
+
+---
+
+## Bước 8: Kiểm Tra Kết Quả Final
+
+### 8.1 Xem Tổng USDT Trong Ví
+
+![Final USDT Balance](img/metamask-usdt-final.png)
+
+1. Mở MetaMask
+2. Tìm USDT trong danh sách tokens
+3. Xem total balance
+4. Compare với expected amount
+
+### 8.2 Verify Trên Block Explorer
+
+![Etherscan Wallet](img/etherscan-wallet-usdt.png)
+
+1. Vào Etherscan
+2. Paste địa chỉ ví
+3. Tab **"Token Holdings"**
+4. Tìm USDT
+5. Verify balance đúng
+
+### 8.3 Tính Toán Chi Phí
+
+![Cost Calculation](img/cost-calculation.png)
+
+Tạo bảng tính:
+
+```
+Token Swapped    | Amount  | USDT Received | Gas Fee | Net USDT
+-----------------|---------|---------------|---------|----------
+ETH              | 0.5     | 1,225         | $12     | 1,213
+USDC             | 1,000   | 999.5         | $8      | 991.5
+DAI              | 500     | 499.8         | $8      | 491.8
+LINK             | 50      | 725           | $10     | 715
+UNI              | 100     | 610           | $10     | 600
+-----------------|---------|---------------|---------|----------
+TOTAL            | -       | 4,059.3       | $48     | 4,011.3
+```
+
+**Phân tích**:
+- Total USDT received: $4,059.3
+- Total gas spent: $48
+- Net USDT after fees: $4,011.3
+- Effective cost: 1.2%
+
+---
+
+## Chi Phí Và Tối Ưu Hóa
+
+### Ước Tính Chi Phí Gas
+
+| Số lượng swaps | Gas/swap | Total Gas Cost | Savings Tips |
+|----------------|----------|----------------|--------------|
+| 1 swap | $10-15 | $10-15 | Tốt rồi |
+| 3 swaps | $8-12 | $24-36 | Batch trong cùng session |
+| 5 swaps | $8-10 | $40-50 | Swap vào giờ thấp điểm |
+| 10 swaps | $8-10 | $80-100 | Cân nhắc aggregate sang USDC trước rồi USDC→USDT |
+
+### Strategies Tiết Kiệm
+
+**Strategy 1: Two-step swap**
+```
+Nhiều tokens → USDC → USDT
+```
+- Swap tất cả tokens → USDC (Uniswap)
+- 1 swap lớn USDC → USDT (Curve: phí thấp cho stablecoin)
+- **Savings**: 20-30% gas nếu >5 tokens
+
+**Strategy 2: Use Layer 2**
+
+Bridge sang Arbitrum/Optimism:
+```
+Ethereum: Withdraw từ Aave/Uniswap → Tokens
+↓ Bridge (~$10-20)
+Arbitrum: Swap tokens → USDT (phí ~$1-2/swap)
+↓ Bridge back (~$10-20)  
+Ethereum: Nhận USDT
+```
+- **Savings**: Đáng nếu >10 swaps
+- **Cost**: $20-40 bridge, nhưng save $80+ swaps
+
+**Strategy 3: Giờ thấp điểm**
+
+Theo dõi gas prices:
+- **Peak hours** (9am-5pm EST): 50-100 gwei
+- **Low hours** (2am-7am EST, weekends): 15-30 gwei
+- **Savings**: 50-70% gas cost
+
+Tools:
+- https://etherscan.io/gastracker
+- https://www.ethereumprice.org/gas/
+
+---
+
+## Lưu Ý Về Tax & Compliance
+
+### 🧾 Ghi Chép Giao Dịch
+
+Mỗi swap là **taxable event** ở hầu hết các quốc gia:
+
+**Thông tin cần lưu**:
+- Date & time
+- Token swapped (ví dụ: ETH)
+- Amount swapped (0.5 ETH)
+- Token received (USDT)
+- Amount received (1,225 USDT)
+- Transaction hash
+- Gas fee paid
+- Gain/Loss (so với cost basis)
+
+### 📊 Sử Dụng Tools Tracking
+
+**Koinly**: https://koinly.io/
+- Import wallet address
+- Tự động track transactions
+- Generate tax reports
+
+**CoinTracker**: https://www.cointracker.io/
+- Similar to Koinly
+- Integration với TurboTax
+
+**Accointing**: https://www.accointing.com/
+- Free tier available
+- Good for DeFi tracking
+
+### ⚖️ Tax Implications
+
+**Short-term capital gains**:
+- Hold <1 năm: Tax như income thường (cao)
+- Ví dụ: Mua ETH $2,000, bán $2,500 → $500 gain
+
+**Long-term capital gains**:
+- Hold >1 năm: Tax rate thấp hơn
+- Check luật tại quốc gia bạn
+
+**Loss harvesting**:
+- Nếu swap ra lỗ, có thể offset gains
+- Consult tax advisor
+
+---
+
+## Xử Lý Sự Cố
+
+### ❌ Lỗi: "Insufficient liquidity"
+
+**Nguyên nhân**: Token ít thanh khoản, không đủ depth
+
+**Giải pháp**:
+1. Giảm số lượng swap (split thành nhiều lệnh nhỏ)
+2. Tăng slippage lên 2-5%
+3. Dùng 1inch để tìm route khác
+4. Swap token → ETH → USDT (thay vì direct)
+
+### ❌ Lỗi: "Price impact too high"
+
+**Nguyên nhân**: Order size lớn so với pool
+
+**Giải pháp**:
+1. Split thành nhiều orders nhỏ
+2. Chờ một lúc giữa các orders
+3. Dùng CoWSwap để tránh slippage
+4. Consider OTC desk nếu >$100k
+
+### ❌ Lỗi: "Transaction failed" sau approve
+
+**Nguyên nhân**: Gas price thay đổi, hoặc approval không đủ
+
+**Giải pháp**:
+1. Check approval trên Etherscan
+2. Revoke và approve lại với unlimited hoặc higher amount
+3. Tăng gas limit
+4. Try lại transaction
+
+### ❌ Lỗi: Nhận ít USDT hơn expected
+
+**Nguyên nhân**: Slippage, price movement, hoặc MEV attack
+
+**Giải pháp phòng ngừa**:
+1. Set low slippage cho stable swaps
+2. Dùng CoWSwap cho large orders
+3. Avoid swapping during high volatility
+4. Check price trên nhiều nguồn trước khi swap
+
+### ❌ Fake USDT Token
+
+**Cảnh báo**: Có rất nhiều fake USDT tokens!
+
+**Verify contract address**:
+- **USDT (Ethereum)**: `0xdac17f958d2ee523a2206206994597c13d831ec7`
+- Check trên Etherscan
+- Verify có ✅ "Tether USD (USDT)" 
+- Check holders: Phải có >10M holders
+
+---
+
+## Best Practices
+
+### ✅ Checklist Trước Khi Swap
+
+- [ ] Kiểm tra contract address của USDT
+- [ ] Set slippage hợp lý (0.5-1%)
+- [ ] Review gas fee có hợp lý không
+- [ ] Verify minimum received amount
+- [ ] Để dành ETH cho phí gas swap sau
+- [ ] Check price trên CoinGecko để đảm bảo rate đúng
+- [ ] Đọc kỹ warning messages (nếu có)
+
+### 🎯 Pro Tips
+
+1. **Aggregate trước khi swap**:
+   - Nếu có nhiều positions trên nhiều protocols
+   - Withdraw tất cả về ví trước
+   - Rồi mới bắt đầu swap
+
+2. **Use limit orders**:
+   - 1inch và CoWSwap support limit orders
+   - Set giá mong muốn
+   - Chờ market hit target
+
+3. **Dollar Cost Average (DCA) out**:
+   - Không swap tất cả cùng lúc
+   - Split thành 3-5 lần trong vài ngày
+   - Tránh timing market
+
+4. **Keep some ETH**:
+   - Luôn giữ ít nhất 0.1 ETH
+   - Cho phí gas transactions tương lai
+   - Hoặc có thể cần unstake/unwrap tokens
+
+---
+
+## Alternatives: Rút Ra Fiat Trực Tiếp
+
+### Cách 1: Gửi USDT Sang CEX
+
+Sau khi có USDT, withdraw về tiền mặt:
+
+1. **Gửi USDT lên Binance/Coinbase**:
+   - Get deposit address
+   - Send USDT từ MetaMask
+   - Wait 10-30 confirmations
+   
+2. **Sell USDT → Fiat**:
+   - Binance P2P hoặc Spot
+   - Withdraw về bank
+
+3. **Chi phí**:
+   - Transfer fee: $5-25 (Ethereum) hoặc $1 (Tron)
+   - CEX withdrawal fee: 0-2%
+
+### Cách 2: Off-ramp Services
+
+**Moonpay**: https://www.moonpay.com/
+- Sell crypto directly từ wallet
+- Nhận tiền qua bank transfer
+- Fee: 4-5%
+
+**Ramp**: https://ramp.network/
+- Similar to Moonpay
+- Lower fees trong một số regions
+
+**Transak**: https://transak.com/
+- Good for non-US users
+- Wide currency support
+
+---
+
+## Kết Luận - Swap Ra USDT
+
+### Tổng Kết Quy Trình
+
+1. ✅ **Kiểm tra** tất cả tokens trong ví
+2. ✅ **Lập danh sách** swap priority
+3. ✅ **Chọn platform** phù hợp (Uniswap/1inch/CoWSwap)
+4. ✅ **Approve** tokens (lần đầu)
+5. ✅ **Swap** từng token → USDT
+6. ✅ **Verify** balance cuối cùng
+7. ✅ **Track** cho tax reporting
+
+### Chi Phí Expected
+
+| Portfolio Size | # Swaps | Gas Cost | Time | Best Method |
+|----------------|---------|----------|------|-------------|
+| < $1,000 | 1-2 | $15-25 | 5-10 min | Uniswap |
+| $1,000-$10,000 | 3-5 | $40-60 | 20-30 min | Uniswap/1inch |
+| $10,000-$50,000 | 5-8 | $60-100 | 1-2 hours | 1inch + CoWSwap |
+| > $50,000 | Varies | Negotiate | Varies | OTC desk hoặc CoWSwap |
+
+### Khuyến Nghị Final
+
+**Cho người mới**:
+- Dùng Uniswap
+- Swap vào giờ thấp điểm
+- Check price trên nhiều nguồn
+
+**Cho trader experienced**:
+- Dùng 1inch để optimize price
+- CoWSwap cho orders lớn
+- Monitor MEV risks
+
+**Cho whale**:
+- Consider OTC desks
+- DCA out trong vài ngày
+- Consult tax advisor
+
+**Chúc bạn swap thành công! 💸**
+
+---
+
 ## Tài Liệu Tham Khảo
 
 ### Aave
