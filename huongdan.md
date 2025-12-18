@@ -1,5 +1,8 @@
 # Hướng Dẫn Rút Tiền Từ Aave Về Ví MetaMask (Kết Nối Ledger Nano X)
 
+> **⚠️ Lưu ý về hình ảnh**: Tài liệu này sử dụng hình ảnh minh họa được lưu trong thư mục `img/`. 
+> Để xem hình ảnh đầy đủ, vui lòng tải về bằng cách chạy lệnh trong file [DOWNLOAD_IMAGES.md](DOWNLOAD_IMAGES.md)
+
 ## Giới Thiệu
 
 Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ giao thức Aave về ví MetaMask của bạn, trong trường hợp ví MetaMask được kết nối với thiết bị phần cứng Ledger Nano X để bảo mật tối đa.
@@ -20,7 +23,7 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
 
 ### 1.1 Kết Nối và Mở Khóa Ledger
 
-![Ledger Nano X](https://images.ctfassets.net/sdlntm3tthp6/1IqV8lXe5OMHgFB2RQpUkG/e4c3df3f4f3f5e4b3b3d3c3c3c3c3c3c/ledger-nano-x.png)
+![Ledger Nano X](img/ledger-nano-x.png)
 
 1. Kết nối Ledger Nano X với máy tính qua Bluetooth hoặc USB-C
 2. Nhập mã PIN để mở khóa thiết bị
@@ -41,7 +44,7 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
 
 ### 2.1 Mở MetaMask và Chuyển Đổi Tài Khoản
 
-![MetaMask Interface](https://miro.medium.com/v2/resize:fit:1400/1*9qX0cq0dBqQqQzQqVq0qVQ.png)
+![MetaMask Interface](img/metamask-interface.png)
 
 1. Mở extension MetaMask trên trình duyệt
 2. Click vào biểu tượng tài khoản ở góc trên bên phải
@@ -58,7 +61,7 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
 
 ### 3.1 Vào Website Aave
 
-![Aave Homepage](https://assets-global.website-files.com/5f6b7190899f41fb70882d08/5f6b7190899f41e4f7882d3a_aave-hero.png)
+![Aave Homepage](img/aave-homepage.png)
 
 1. Truy cập: **https://app.aave.com/**
 2. Click nút **"Connect Wallet"** ở góc trên bên phải
@@ -66,7 +69,7 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
 
 ### 3.2 Chọn Mạng (Network)
 
-![Aave Networks](https://i.imgur.com/3vZmQqg.png)
+![Aave Networks](img/aave-networks.png)
 
 1. Aave hỗ trợ nhiều mạng: Ethereum, Polygon, Avalanche, Arbitrum, Optimism
 2. Click vào dropdown network ở góc trên
@@ -79,7 +82,7 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
 
 ### 4.1 Xem Dashboard
 
-![Aave Dashboard](https://i.imgur.com/8vZmQqg.png)
+![Aave Dashboard](img/aave-dashboard.png)
 
 1. Sau khi kết nối thành công, bạn sẽ thấy **Dashboard** của mình
 2. Phần **"Supplied assets"** hiển thị các tài sản bạn đã gửi vào Aave
@@ -100,14 +103,14 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
 
 ### 5.1 Chọn Tài Sản Muốn Rút
 
-![Aave Withdraw Button](https://i.imgur.com/Zq2qQqg.png)
+![Aave Withdraw Button](img/aave-withdraw-button.png)
 
 1. Trong phần **"Supplied assets"**, tìm tài sản bạn muốn rút
 2. Click vào nút **"Withdraw"** bên cạnh tài sản đó
 
 ### 5.2 Nhập Số Lượng Muốn Rút
 
-![Aave Withdraw Modal](https://i.imgur.com/9qX0cq0.png)
+![Aave Withdraw Modal](img/aave-withdraw-modal.png)
 
 1. Cửa sổ popup sẽ hiện ra
 2. Nhập số lượng token bạn muốn rút hoặc:
@@ -132,7 +135,7 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
 
 ### 6.1 Xác Nhận Trên MetaMask
 
-![MetaMask Confirmation](https://i.imgur.com/7qX0cq0.png)
+![MetaMask Confirmation](img/metamask-confirmation.png)
 
 1. Click nút **"Withdraw [Token Name]"**
 2. MetaMask sẽ hiện popup xác nhận giao dịch
@@ -143,7 +146,7 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
 
 ### 6.2 Ký Trên Ledger Nano X
 
-![Ledger Signing](https://support.ledger.com/hc/article_attachments/360007762020/Screenshot_2020-01-22_at_16.34.51.png)
+![Ledger Signing](img/ledger-signing.png)
 
 1. Sau khi click **"Confirm"** trên MetaMask, xem Ledger Nano X
 2. Ledger sẽ hiển thị thông tin giao dịch:
@@ -157,7 +160,7 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
 
 ### 6.3 Chờ Xác Nhận Trên Blockchain
 
-![Transaction Pending](https://i.imgur.com/8vZmQqg.png)
+![Transaction Pending](img/transaction-pending.png)
 
 1. Sau khi ký, giao dịch sẽ được gửi lên blockchain
 2. MetaMask hiển thị trạng thái **"Pending"**
@@ -170,7 +173,7 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
 
 ### 7.1 Kiểm Tra Trên Aave
 
-![Aave Success](https://i.imgur.com/9qX0cq0.png)
+![Aave Success](img/aave-success.png)
 
 1. Khi giao dịch hoàn tất, Aave hiển thị thông báo **"Success"** hoặc **"Transaction completed"**
 2. Dashboard cập nhật:
@@ -179,7 +182,7 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
 
 ### 7.2 Kiểm Tra Trong MetaMask
 
-![MetaMask Balance](https://i.imgur.com/7qX0cq0.png)
+![MetaMask Balance](img/metamask-balance.png)
 
 1. Mở MetaMask
 2. Kiểm tra số dư token vừa rút đã tăng lên
@@ -187,7 +190,7 @@ Tài liệu này hướng dẫn chi tiết cách rút tiền (withdraw) từ gia
 
 ### 7.3 Kiểm Tra Trên Etherscan
 
-![Etherscan Transaction](https://i.imgur.com/8vZmQqg.png)
+![Etherscan Transaction](img/etherscan-transaction.png)
 
 1. Click vào giao dịch trong MetaMask
 2. Click **"View on Etherscan"**
